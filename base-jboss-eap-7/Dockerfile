@@ -27,6 +27,6 @@ ENV PATH=$PATH:/home/developer/opt/jboss-eap-7.0/bin
 RUN echo 'JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n"' >>  /home/developer/opt/jboss-eap-7.0/bin/standalone.conf
 RUN echo 'JAVA_OPTS="$JAVA_OPTS -Djboss.bind.address=0.0.0.0"' >>  /home/developer/opt/jboss-eap-7.0/bin/standalone.conf
 
-
+EXPOSE 9990 9993 8009 8080 8443 4712 4713 8787 
 
 CMD ["bash"]
