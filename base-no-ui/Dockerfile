@@ -1,5 +1,8 @@
 FROM buildpack-deps:xenial
 
+RUN apt-get update && apt-get install -y \
+    sudo && \
+    rm -rf /var/lib/apt/lists/*
 
 
 # Replace 1000 with your user / group id
