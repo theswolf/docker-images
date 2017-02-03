@@ -2,4 +2,4 @@ Run with:
 docker run -ti --rm \
        -e DISPLAY=$DISPLAY \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
-       theswolf/base-ui
+       theswolf/base-no-ui
