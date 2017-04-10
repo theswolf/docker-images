@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make sure the user data directory is owned by the developer user
-if [ -d /home/developer/.eclipse ]; then
-  sudo chown developer:developer /home/developer/.eclipse
+if [ -d /home/developer/.IdeaIC2017.1 ]; then
+  sudo chown developer:developer /home/developer/.IdeaIC2017.1
 fi
-exec /opt/eclipse/eclipse
+exec /opt/intellij/bin/idea.sh
