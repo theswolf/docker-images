@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module
 
 ARG INTELLIJ_LINK="http://download.jetbrains.com/idea/ideaIC-2017.1.tar.gz"
 
+RUN mkdir -p /opt/intellij
+
 RUN wget $INTELLIJ_LINK -O /tmp/intellij.tar.gz -q && \
     echo 'Installing intellij' && \
     tar -xf /tmp/intellij.tar.gz --strip-components=1 -C /opt/intellij && \
