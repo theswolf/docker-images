@@ -30,8 +30,7 @@ RUN chmod +x /usr/local/bin/intellij
 
 RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
 
-RUN chmod +x /usr/local/bin/eclipse && \
-    mkdir -p /home/developer && \
+RUN mkdir -p /home/developer && \
     echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:1000:" >> /etc/group && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
