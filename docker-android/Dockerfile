@@ -28,4 +28,4 @@ RUN cd /opt && \
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
-CMD /usr/local/bin/sqldeveloper
+CMD /usr/local/bin/intellij
