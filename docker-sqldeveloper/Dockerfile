@@ -44,4 +44,4 @@ RUN mkdir -p /home/developer && \
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
-CMD /usr/local/bin/intellij
+CMD /usr/local/bin/sqldeveloper
