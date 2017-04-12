@@ -16,7 +16,9 @@ RUN  apt-get update && apt-get install -y software-properties-common && \
 # the netbeans image
 RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module
 
-ARG INTELLIJ_LINK="https://download.jetbrains.com/idea/ideaIC-2017.1.tar.gz"
+ARG INTELLIJ_LINK="http://download.jetbrains.com/idea/ideaIC-2017.1.tar.gz"
+
+RUN mkdir -p /opt/intellij
 
 RUN wget $INTELLIJ_LINK -O /tmp/intellij.tar.gz -q && \
     echo 'Installing intellij' && \
@@ -28,8 +30,7 @@ RUN chmod +x /usr/local/bin/intellij
 
 RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
 
-RUN chmod +x /usr/local/bin/eclipse && \
-    mkdir -p /home/developer && \
+RUN mkdir -p /home/developer && \
     echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:1000:" >> /etc/group && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
