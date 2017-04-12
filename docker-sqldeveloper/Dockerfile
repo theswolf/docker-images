@@ -7,7 +7,7 @@ RUN  apt-get update && apt-get install -y software-properties-common && \
     apt-get update && \
     #echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     #apt-get install -y oracle-java8-installer libxext-dev libxrender-dev libxtst-dev && \
-    apt-get install -y libxext-dev libxrender-dev libxtst-dev && \
+    apt-get install -y libxext-dev libxrender-dev libxtst-dev libgtk-3-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
