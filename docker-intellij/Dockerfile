@@ -28,7 +28,7 @@ RUN wget $INTELLIJ_LINK -O /tmp/intellij.tar.gz -q && \
 ADD run /usr/local/bin/intellij
 RUN chmod +x /usr/local/bin/intellij
 
-RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y sudo zip && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /home/developer && \
     echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
