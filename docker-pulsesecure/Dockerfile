@@ -1,9 +1,9 @@
 FROM buildpack-deps:zesty
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
-RUN  apt-get update && apt-get install -y gdebi
+#RUN  apt-get update && apt-get install -y gdebi
 
-ARG PULSELINK=https://wiki.unitn.it/_media/pub:vpn:ps-pulse-linux-8.2r4.0-b47329-ubuntu-debian-installer.deb
+#ARG PULSELINK=https://wiki.unitn.it/_media/pub:vpn:ps-pulse-linux-8.2r4.0-b47329-ubuntu-debian-installer.deb
 #ARG MSSLINK=http://ftp.us.debian.org/debian/pool/main/n/nss-mdns/libnss-mdns_0.10-6_i386.deb
 
 
@@ -24,7 +24,7 @@ ARG PULSELINK=https://wiki.unitn.it/_media/pub:vpn:ps-pulse-linux-8.2r4.0-b47329
 #RUN /usr/local/pulse/PulseClient.sh install_dependency_packages
 
 #RUN apt-get update && apt-get install -y sudo lib32z1 automake libtool liblz4-1 libxml2-dev && \
-RUN apt-get update && apt-get install -y sudo openconnect && \
+RUN apt-get update && apt-get install -y sudo openconnect wget software-properties-common openjdk-8-jdk rsync && \
 rm -rf /var/lib/apt/lists/*
 
 #RUN mkdir -p /etc/vpnc/ && wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script -O /etc/vpnc/vpnc-script
@@ -34,6 +34,21 @@ rm -rf /var/lib/apt/lists/*
 #./configure && \
 #make && \
 #make install
+
+# Install Java.
+
+
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+# Installs Ant
+ENV ANT_VERSION=1.10.1
+RUN cd && \
+    wget -q http://www.us.apache.org/dist//ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    tar -xzf apache-ant-${ANT_VERSION}-bin.tar.gz && \
+    mv apache-ant-${ANT_VERSION} /opt/ant && \
+    rm apache-ant-${ANT_VERSION}-bin.tar.gz
+ENV ANT_HOME /opt/ant
+ENV PATH ${PATH}:/opt/ant/bin
 
 RUN mkdir -p /home/developer && \
     echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
@@ -55,6 +70,11 @@ RUN update-ca-certificates
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
+RUN  git config --global user.email "christian.geymonat@scai-finance.grupposcai.it"
+RUN  git config --global user.name "Christian Geymonat"
+ADD entrypoint.sh /home/developer/entrypoint.sh
+ADD buildInfoGroup.properties /home/developer/buildInfoGroup.properties
+CMD bash ./entrypoint.sh
 #https://vpn-fi.infogroup.it/dana-na/auth/url_3/welcome.cgi
 #/usr/local/pulse/PulseClient.sh -h secure.company.com -u user01 -p password01 
 #-U https://secure.company.com/linux -r Realm -f secure.company.com.der
@@ -63,5 +83,11 @@ WORKDIR /home/developer
 #-U https://vpn-fi.infogroup.it/dana-na/auth/url_3/welcome.cgi 
 #-U https://vpn-fi.infogroup.it/dana-na/auth/url_3/login.cgi
 #-f /home/developer/vpn-fiinfogroupit.crt
-CMD echo Azzurro2016 | sudo openconnect --juniper --passwd-on-stdin -b -u IG06257 vpn-fi.infogroup.it/dana-na/auth/url_3/login.cgi && \
-git  -c http.sslVerify=false clone https://IG06257:Azzurro2016@src.servizi.infogroup.it/scm/git/06/SOGE0.git
+#CMD echo Azzurro2016 | sudo openconnect --juniper --passwd-on-stdin -b -u IG06257 vpn-fi.infogroup.it/dana-na/auth/url_3/login.cgi && \
+#git  -c http.sslVerify=false clone https://IG06257:Azzurro2016@src.servizi.infogroup.it/scm/git/06/SOGE0.git
+#DA IFG SYSTEM MERGE SUL NOSTRO FILIALI_ESTERE
+#NOSTRO FILIALI ESTERE CP SU IFG FILIALI ESTERE
+#BUILD DI IFG FILIALI ESTERE
+#COMMIT PUSH IFG FILIALI ESTERE
+#MERGE IFG FILIALI ESTERE SU IFG SYSTEM
+#MERGE IFG SYSTEM SUN NOSTRO SYSTEM

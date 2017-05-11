@@ -1,0 +1,20 @@
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Vary: Accept-Language, Cookie
+WWW-Authenticate: Basic realm="Bitbucket.org HTTP"
+Cache-Control: max-age=900
+Content-Type: text/html; charset=utf-8
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Date: Wed, 19 Apr 2017 13:41:37 GMT
+X-Served-By: app-164
+Content-Language: en
+X-Static-Version: c8581401e8be
+ETag: "d41d8cd98f00b204e9800998ecf8427e"
+X-Render-Time: 0.0134091377258
+Connection: keep-alive
+X-Version: c8581401e8be
+X-Request-Count: 381
+X-Frame-Options: SAMEORIGIN
+X-Cache-Info: not cacheable; response code not cacheable
+Content-Length: 0
+
