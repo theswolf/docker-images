@@ -1,5 +1,6 @@
 #FROM buildpack-deps:yakkety
-FROM buildpack-deps:jessie-scm
+#FROM buildpack-deps:jessie-scm
+FROM x11docker/lxde
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
