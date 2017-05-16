@@ -1,4 +1,5 @@
-FROM buildpack-deps:yakkety
+#FROM buildpack-deps:yakkety
+FROM buildpack-deps:jessie-scm
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
