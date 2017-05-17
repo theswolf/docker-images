@@ -8,7 +8,7 @@ MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 # Install required dependencies if needed
 ####################################################
 
-RUN apt-get update && apt-get install -y apt-transport-https software-properties-common wget evolution sudo zip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y apt-transport-https software-properties-common wget evolution evolution-ews sudo zip && rm -rf /var/lib/apt/lists/*
 
 
 RUN mkdir -p /home/developer && \
