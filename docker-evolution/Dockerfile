@@ -1,6 +1,6 @@
 #FROM buildpack-deps:yakkety
 #FROM buildpack-deps:jessie-scm
-FROM x11docker/lxde
+FROM garland/dockerfile-ubuntu-gnome
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
