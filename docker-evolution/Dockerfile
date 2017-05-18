@@ -1,6 +1,6 @@
 #FROM buildpack-deps:yakkety
 #FROM buildpack-deps:jessie-scm
-FROM ubuntu:16.04
+FROM hiroom2/doxrdp-ubuntu-1604-unity
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
@@ -9,7 +9,6 @@ MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 ####################################################
 
 RUN apt-get update && apt-get install -y apt-transport-https software-properties-common wget sudo zip
-RUN apt-get install -y ubuntu-desktop
 RUN apt-get install -y evolution evolution-ews  && rm -rf /var/lib/apt/lists/*
 
 
