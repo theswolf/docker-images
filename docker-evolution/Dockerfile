@@ -1,6 +1,6 @@
 #FROM buildpack-deps:yakkety
 #FROM buildpack-deps:jessie-scm
-FROM garland/dockerfile-ubuntu-gnome
+FROM ubuntu:16.04
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
@@ -9,7 +9,8 @@ MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 ####################################################
 
 RUN apt-get update && apt-get install -y apt-transport-https software-properties-common wget sudo zip
-RUN apt-get install -y re2c evolution evolution-ews  && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y ubuntu-desktop
+RUN apt-get install -y evolution evolution-ews  && rm -rf /var/lib/apt/lists/*
 
 
 RUN mkdir -p /home/developer && \
