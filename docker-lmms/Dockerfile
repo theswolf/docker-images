@@ -1,32 +1,25 @@
-FROM buildpack-deps:yakkety
+FROM ubuntu:16.04
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
-##############SOFTWARE BLOCK########################
+RUN \
+    apt-get update && \
+    printf no\n | apt-get install -y jackd2 --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install required dependencies if needed
-####################################################
+RUN \
+    apt-get update && \
+    printf no\n | apt-get install -y jack --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y apt-transport-https software-properties-common wget
+RUN \
+    apt-get update && \
+    apt-get install -y ubuntustudio-audio-plugins && \
+rm -rf /var/lib/apt/lists/*
 
-# Download package file
-RUN wget https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos_9.4.1~kxstudio1_all.deb
-
-# Install it
-RUN dpkg -i kxstudio-repos_9.4.1~kxstudio1_all.deb
-
-
-
-# Install required dependencies if needed
-RUN apt-get install -y libglibmm-2.4-1v5
-
-# Download package file
-RUN wget https://launchpad.net/~kxstudio-debian/+archive/kxstudio/+files/kxstudio-repos-gcc5_9.4.1~kxstudio1_all.deb
-
-# Install it
-RUN dpkg -i kxstudio-repos-gcc5_9.4.1~kxstudio1_all.deb
-
-RUN apt-get update && apt-get install -y lmms lmms-common
-####################################################
+RUN \
+    apt-get update && \
+    apt-get install -y lmms && \
+rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
 

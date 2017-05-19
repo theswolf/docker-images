@@ -1,6 +1,6 @@
 #FROM buildpack-deps:yakkety
 #FROM buildpack-deps:jessie-scm
-FROM hiroom2/doxrdp-ubuntu-1604-unity
+FROM ubuntu:16.04
 MAINTAINER Chris Geymo "chris.geymo@gmail.com"
 
 ##############SOFTWARE BLOCK########################
