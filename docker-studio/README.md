@@ -13,7 +13,13 @@ studiod ()
 { 
     HOME_FOLDER=$HOME/docker/.code-studio;
     mkdir -p $HOME_FOLDER;
-    docker run -d --rm --cap-add=SYS_ADMIN -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME_FOLDER:/home/developer -v /dev/bus/usb:/dev/bus/usb --privileged  --name studio theswolf/docker-studio
+    docker start studio || docker run -d --cap-add=SYS_ADMIN -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --device /dev/snd \
+	-e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native \
+	-v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native \
+	--group-add $(getent group audio | cut -d: -f3) \
+    -v $HOME_FOLDER:/home/developer -v /dev/bus/usb:/dev/bus/usb --privileged  \
+    --name studio theswolf/docker-studio $@
 }
 
 
