@@ -38,7 +38,7 @@ RUN mkdir -p /home/developer && \
 #COPY lombok.jar /opt/eclipse
 #RUN echo '-javaagent:/opt/eclipse/lombok.jar' >> /opt/eclipse/eclipse.ini
 
-RUN apt-get update && apt-get install -y alsa alsa-tools alsa-utils && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y alsa-oss alsa-tools alsa-utils && rm -rf /var/lib/apt/lists/*
 RUN usermod -a -G pulse-access developer
 RUN usermod -a -G pulse developer
 RUN usermod -a -G audio developer
